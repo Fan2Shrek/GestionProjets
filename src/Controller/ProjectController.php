@@ -10,12 +10,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
-final class HomeController extends AbstractController 
+final class ProjectController extends AbstractController 
 {
 
-    #[Route(path: "/project", name: "Project")]
+    #[Route(path: "/projects", name: "Project")]
     public function project(Request $request): Response
     {
-        return $this->render('project/project.html.twig');
+        return $this->render('project/projects.html.twig');
     }
 }

@@ -1,0 +1,109 @@
+{% extends "base.html.twig" %}
+{% block title %}Projects{% endblock %}
+
+{% block body %}
+                <!-- section -->
+                <div class="col-lg-9 col-md-9 col-sm-12">
+                    <h3 class="nouv">&emsp;Projets</h3>
+                    <!-- debut carré -->
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="fondTableau">
+                            <!-- début tableau -->
+                            <div class="table-responsive">
+                                <!-- form -->
+                                <form>
+
+                                    <table class="table table-bordered" id="tabClient">
+
+                                        <!-- titre -->
+                                        <tr class="trTableau">
+                                            <th>NOM</th>                                                
+                                            <th>CLIENT</th>
+                                            <th>HEBERGEUR</th>
+                                            <th>MODIFIER</th>
+                                        </tr>
+
+                                        <!-- filtre -->
+                                        
+                                            <tr>
+                                                <td><input class="inputSearch" name='name' value=''></td>
+                                                <td><input class="inputSearch" name='customer' value=''></td>
+                                                <td><input class="inputSearch" name='host' value=''></td>
+                                                <td>
+                                                    <button type='submit' style='display:none'>Chercher</button>
+                                                    <a class='reset' href='Project/all'>X</button>
+                                                </td>
+                                            </tr>
+                                        
+                                        <!-- affichage -->
+                                        {# <?php
+                                            if (empty($projects)){
+                                                echo '<tr><td colspan="4" style="text-align:center">Aucun projet ne corespond à votre recherche</td></tr>';
+                                            }
+                                            else{
+                                                foreach ($projects as $projects){
+                                                    echo "<tr class='tr2Tableau'>
+                                                        <td>". $projects->getName() ."</td>
+                                                        <td>". $projects->getCustomer()->getName() ."</td>
+                                                        <td>". $projects->getHost()->getName() ."</td>
+                                                        <td>
+                                                            <a class='aTabl' href='Project/". $projects->getId() ."'>Modifier</a>
+                                                        </td>
+                                                    </tr>";
+                                                }  
+                                            } 
+                                        ?> #}
+
+                                    </table>
+                                    {# 
+                                    <!-- pagination choix affichage -->
+                                    <div class="col-lg-3 col-md-3 sm-3"> 
+                                        <div class="paginationCSS">                                          
+                                            <label class="labelPagination">Résultats/pages&emsp;</label>
+                                            <select name='nbPage' onchange="this.form.submit()" class="selectPagination">
+                                                <option value="5">5</option>
+                                                <option value="10">10</option>
+                                                <option value="15">15</option>
+                                                <option value="20">20</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- pagination boutons -->
+                                    <div class="col-lg-3 col-md-3 col-sm-3">                                                                
+                                        <ul class="pagination">
+                                            <li class="page-item">
+                                                <a href=''class="page-link"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                                            </li>
+                                                <li class="page-item">
+                                                    <a href="" class="page-link"></a>
+                                                </li>
+                                                <li class="page-item" >
+                                                <a href='' class="page-link"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                                            </li>
+                                        </ul>                                            
+                                    </div>
+                                     #}
+                                    <!-- liens -->
+                                    <div class="col-lg-3 col-lg-offset-1 col-md-3 col-sm-3">
+                                        <div class="tableauBouton">                                          
+                                            <a href='Project/view.php' class="btnBlanc"><span class="glyphicon glyphicon-file"></span>&emsp;EXPORTER</a>&emsp;
+                                        </div>                                           
+                                    </div>                                                
+                                
+                                    <!-- liens -->
+                                    <div class="col-lg-2 col-md-3 col-sm-3">
+                                        <div class="tableauBouton">
+                                            <a href='Project/Insert.php' class="btnOrange">+ AJOUTER</a>
+                                        </div>                                           
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
