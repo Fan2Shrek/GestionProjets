@@ -53,6 +53,22 @@
                                                 }  
                                             } 
                                         ?> #}
+                                                                            
+                                    {% if projects is defined %}
+                                        {% for project in projects %}
+                                            <tr>
+                                                <td>{{ project.name }}</td>
+                                                <td>{{ project.code }}</td>
+                                                <td>{{ project.hebergeur.name }}</td>
+                                                <td>{{ project.client.name }}</td>
+                                                <td>
+                                                    <a class='aTabl' href='{{ path('UpdateProject', {'id' : project.id })}}'>Modifier</a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% else %}
+                                        <tr><td colspan=4><h2 class='noResult'>Pas de projets</h2></td></tr>
+                                    {% endif %}
 
                                     </table>
                                     {# 
