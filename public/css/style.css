@@ -302,3 +302,7 @@ footer h4{
     background-color: #ccc;
     padding-bottom: 0px;
 }
+
+.noResult{
+    text-align: center;
+}

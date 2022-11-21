@@ -1,11 +1,10 @@
 {% extends 'base.html.twig' %}
-{% block title %} Liste des clients {% endblock %}
+{% block title %} Liste des hébergeurs {% endblock %}
 
 {% block body %}
-    <div class="col-lg-9 col-md-9 col-sm-12">
-    <h3 class="nouv">&emsp;Clients</h3>
+<div class="col-lg-9 col-md-9 col-sm-12">
+    <h3 class="nouv">&emsp;Hébergeurs</h3>
 
-        <!-- debut carré -->
     <div class="col-lg-12 col-md-12 col-sm-12">
         
         <div class="fondTableau">
@@ -19,30 +18,28 @@
                     <th>NOTES</th>
                     <th>MODIFIER</th>
                 </tr>
-                {% if customers is defined %}
-                    {% for customer in customers %}
+                {% if hosts is defined %}
+                    {% for host in hosts %}
                         <tr>
-                            <td>{{ customer.name }}</td>
-                            <td>{{ customer.code }}</td>
-                            <td>{{ customer.notes }}</td>
+                            <td>{{ host.name }}</td>
+                            <td>{{ host.code }}</td>
+                            <td>{{ host.notes }}</td>
                             <td>
-                                <a class='aTabl' href='{{ path('UpdateCustomer', {'id' : customer.id })}}'>Modifier</a>
+                                <a class='aTabl' href='{{ path('UpdateHost', {'id' : host.id })}}'>Modifier</a>
                             </td>
                         </tr>
                     {% endfor %}
                 {% else %}
-                    <tr><td colspan=4><h2 class='noResult'>Pas de client</h2></td></tr>
+                    <tr><td colspan=4><h2 class='noResult'>Pas d'hébergeur</h2></td></tr>
                 {% endif %}
             </table>
 
         </div>
 
             <div class="btnAdd2">
-                <a href='Customer/Insert.php' class="btnInsertLien">+ Ajouter</a>&emsp;
+                <a href='Host/Insert.php' class="btnInsertLien">+ Ajouter</a>&emsp;
             </div>
             <br>
         </div>
     </div>
-
-</div>
 {% endblock %}
