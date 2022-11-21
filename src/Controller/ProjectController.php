@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 final class ProjectController extends AbstractController 
 {
 
-    #[Route(path: "/projects", name: "Project")]
+    #[Route(path: "/projects", name: "projects")]
     public function project(Request $request): Response
     {
         return $this->render('project/projects.html.twig');
