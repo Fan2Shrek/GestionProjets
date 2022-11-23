@@ -2,14 +2,8 @@
 
 namespace App\Classes;
 
-use App\Interfaces\IdInterface;
-use App\Traits\IdTrait;
-use App\Classes\Customer;
-use App\Classes\Host;
-
-class Contact implements IdInterface
+class Contact
 {
-	use idTrait;
 	private ?Customer $customer;
 	private ?Host $host;
 

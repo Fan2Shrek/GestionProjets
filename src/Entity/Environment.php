@@ -2,15 +2,10 @@
 
 namespace App\Classes;
 
-use App\Interfaces\IdInterface;
-use App\Interfaces\NameInterface;
-use App\Traits\IdTrait;
-use App\Traits\NameTrait;
-use App\Classes\Project;
 
-class Environment implements IdInterface, nameInterface
+class Environment
 {
-    use idTrait, NameTrait;
+
     public function __construct
     (
         private int $id,

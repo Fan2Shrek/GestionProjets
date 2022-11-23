@@ -26,7 +26,7 @@
                             <td>{{ customer.code }}</td>
                             <td>{{ customer.notes }}</td>
                             <td>
-                                <a class='aTabl' href='{{ path('UpdateCustomer', {'id' : customer.id })}}'>Modifier</a>
+                                <a class='aTabl' href='{{ path('updateCustomer', {'id' : customer.id })}}'>Modifier</a>
                             </td>
                         </tr>
                     {% endfor %}
