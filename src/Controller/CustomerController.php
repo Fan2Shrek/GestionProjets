@@ -16,5 +16,16 @@ final class CustomerController extends AbstractController
     {
         return $this->render('customer/index.html.twig');
     }
+    
+    #[Route(path: "customer/edit/{id}", name: "EditCustomer")]
+    public function edit(Request $request): Response
+    {
+        return $this->render('customer/edit.html.twig');
+    }
 
+    #[Route(path: "customer/new", name: "NewCustomer")]
+    public function new(Request $request): Response
+    {
+        return $this->render('customer/insert.html.twig');
+    }
 }
