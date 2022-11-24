@@ -16,11 +16,8 @@ final class CustomerController extends AbstractController
     #[Route(path: "/customers", name: "customers")]
     public function home(Request $request, CustomerRepository $CusRep,): Response
     {
-        // $customers = $CusRep->findAll();
-        $customers = array();
-        return $this->render('customer/index.html.twig',[
-            'customers' => $customers,
-        ]);
+        $customers = $CusRep->findAll();
+        return $this->render('customer/index.html.twig');
     }
     
     #[Route(path: "customer/edit/{id}", name: "EditCustomer")]
