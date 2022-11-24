@@ -1,19 +1,13 @@
 <?php
 
-namespace App\Classes;
+namespace App\Entity;
 
-use App\Interfaces\IdInterface;
-use App\Interfaces\NameInterface;
-use App\Interfaces\CodeNoteInterface;
-use App\Traits\CodeNotesTrait;
-use App\Traits\IdTrait;
-use App\Traits\NameTrait;
-use App\Classes\Customer;
-use App\Classes\Host;
 
-class Project implements IdInterface, nameInterface, codeNoteInterface
+use App\Entity\Customer;
+use App\Entity\Host;
+
+class Project 
 {
-    use idTrait, NameTrait, codeNotesTrait;
     public function __construct
     (
         private int $id,

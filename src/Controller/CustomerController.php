@@ -7,14 +7,19 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\CustomerRepository;
+use App\Entity\Customer;
 
 final class CustomerController extends AbstractController
 {
 
     #[Route(path: "/customers", name: "customers")]
-    public function home(Request $request): Response
+    public function home(Request $request, CustomerRepository $CusRep,): Response
     {
-        return $this->render('customer/index.html.twig');
+        $customers = $CusRep->findAll();
+        return $this->render('customer/index.html.twig',[
+            'customers' => $customers,
+        ]);
     }
     
     #[Route(path: "customer/edit/{id}", name: "EditCustomer")]
@@ -28,4 +33,5 @@ final class CustomerController extends AbstractController
     {
         return $this->render('customer/insert.html.twig');
     }
+  
 }
