@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block title %} Modifier un client {% endblock %}
+
+{% block body %}
+    <div class="col-lg-9 col-md-9 col-sm-12">
+        <!-- lien -->
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <h2 class="nouv">Nouveau client</h2>
+            <ul class="listContact">
+                <a href="Customer/insert.php" class="infoGenerale">INFORMATIONS GÉNÉRALES</a>&emsp;
+                <a href="Contact/C-0-new" class="contactLien">CONTACTS CLIENT</a>
+            </ul>
+        </div>
+
+        <!-- debut carré -->
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="add">
+
+                <!-- début form -->
+                <form method='Post'>
+
+                    <label class="lab">Nom <span style="color:red">*</span></label>
+                    <input name='name' class="input0" value="">
+                    <p class="error"></p>
+
+                    <br>
+
+                    <label class="lab">Code interne</label>
+                    <button disabled="disabled" class="input1">Champs généré automatiquement</button>
+
+                    <br>
+
+                    <label class="lab2">Notes / remarques</label>
+                    <textarea name='notes' class="textarea"></textarea>
+                    <p class="error"></p>
+
+                    <!-- bouton form -->
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="btnPlace">
+                            <a href="Customer/View.php" class="btnBlanc">ANNULER</a>&emsp;
+                            <button type='submit' name='submit' class="btnOrange"><span class="glyphicon glyphicon-ok"></span> SAUVEGARDER</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

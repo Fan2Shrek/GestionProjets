@@ -17,4 +17,15 @@ final class HostController extends AbstractController
         return $this->render('host/index.html.twig');
     }
 
+    #[Route(path: "host/edit/{id}", name: "EditHost")]
+    public function edit(Request $request): Response
+    {
+        return $this->render('host/edit.html.twig');
+    }
+
+    #[Route(path: "host/new", name: "NewHost")]
+    public function new(Request $request): Response
+    {
+        return $this->render('host/insert.html.twig');
+    }
 }

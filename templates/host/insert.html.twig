@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block title %} Ajouter un hébergeur {% endblock %}
+
+{% block body %}
+    <div class="col-lg-9 col-md-9 col-sm-12">
+        <!-- lien -->
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <h2 class="nouv">Nouvel hébergeur</h2>
+            <ul class="listContact">
+                <a href="Host/insert.php" class="infoGenerale">INFORMATIONS GÉNÉRALES</a>&emsp;
+                <a href="Contact/H-0-new" class="contactLien2">CONTACTS HEBERGEUR</a>
+            </ul>
+        </div>
+
+        <!-- debut carré -->
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="add">
+
+                <!-- début form -->
+                <form method='Post'>
+
+                    <label class="lab">Nom <span style="color:red">*</span></label>
+                    <input name='name' class="input0" value="">
+                    <p class="error"></p>
+
+                    <br>
+
+                    <label class="lab">Code interne</label>
+                    <button disabled="disabled" class="input1">Champs généré automatiquement</button>
+
+                    <br>
+
+                    <label class="lab2">Notes / remarques</label>
+                    <textarea name='notes' class="textarea"></textarea>
+                    <p class="error"></p>
+
+                    <!-- bouton form -->
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="btnPlace">
+                            <a href="{{ path('hosts') }}" class="btnBlanc">ANNULER</a>&emsp;
+                            <button type='submit' name='submit' class="btnOrange"><span class="glyphicon glyphicon-ok"></span> SAUVEGARDER</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
