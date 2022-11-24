@@ -17,6 +17,7 @@ final class CustomerController extends AbstractController
     public function home(Request $request, CustomerRepository $CusRep,): Response
     {
         // $customers = $CusRep->findAll();
+        $customers = array();
         return $this->render('customer/index.html.twig',[
             'customers' => $customers,
         ]);
