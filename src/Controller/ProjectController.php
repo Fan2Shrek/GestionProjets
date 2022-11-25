@@ -18,7 +18,7 @@ final class ProjectController extends AbstractController
         return $this->render('project/projects.html.twig');
     }
 
-    #[Route(path: "/project/update/{id}", name: "EditHost")]
+    #[Route(path: "/project/update/{id}", name: "EditProject")]
     public function edit(Request $request): Response
     {
         return $this->render('project/edit.html.twig');

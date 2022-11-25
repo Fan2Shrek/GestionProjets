@@ -20,18 +20,18 @@
                 <form method='Post'>
 
                     <label class="lab">Nom <span style="color:red">*</span></label>
-                    <input name='name' class="input0" value="">
+                    <input name='name' class="input0" value="{{ host.name }}">
                     <p class="error"></p>
 
                     <br>
 
                     <label class="lab">Code interne</label>
-                    <button disabled="disabled" class="input1" value="">Champs généré automatiquement</button>
+                    <button disabled="disabled" class="input1" value="{{ host.code }}">Champs généré automatiquement</button>
 
                     <br>
 
                     <label class="lab2">Notes / remarques</label>
-                    <textarea name='notes' class="textarea2"></textarea>
+                    <textarea name='notes' class="textarea2">{{ host.notes }}</textarea>
                     <p class="error"></p>
 
                     <!-- bouton form -->
@@ -58,7 +58,7 @@
                                     </div>
                                     <div class='modal-footer'>
                                         <form method="post">
-                                            <input type='hidden' value="<?php echo $_GET['id']?>">
+                                            <input type='hidden' value="">
                                             <button type='submit' name='submit_delete' class="btnOrange">Supprimer</button>&emsp;
                                         </form>
                                         <button type='button' class='btnBlanc' data-dismiss='modal'>Fermer</button>
