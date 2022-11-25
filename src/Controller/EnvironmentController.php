@@ -9,24 +9,18 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-final class ProjectController extends AbstractController 
+final class EnvironmentController extends AbstractController 
 {
 
-    #[Route(path: "/projects", name: "projects")]
+    #[Route(path: "/environment/edit", name: "EditEnvironment")]
     public function project(Request $request): Response
     {
-        return $this->render('project/projects.html.twig');
+        return $this->render('environment/edit.html.twig');
     }
 
-    #[Route(path: "/project/update/{id}", name: "EditHost")]
+    #[Route(path: "/environment/insert", name: "NewEnvironment")]
     public function edit(Request $request): Response
     {
-        return $this->render('project/edit.html.twig');
-    }
-
-    #[Route(path: "/project/new", name: "NewProject")]
-    public function new(Request $request): Response
-    {
-        return $this->render('project/insert.html.twig');
+        return $this->render('environment/insert.html.twig');
     }
 }

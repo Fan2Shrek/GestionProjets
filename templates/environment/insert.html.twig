@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+{% block title %} Ajouter un Produit{% endblock %}
+
+{% block body %}
+                    <!-- titre -->
+                    <div class="col-lg-9 col-md-9 col-sm-12">
+
+                        <!-- lien -->
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h2 class='nouv'>Nouvel environnement</h2>
+                            <ul class="listContact">
+                                <a href="{{ path('NewProject')}}" class="infoGenerale2">INFORMATIONS GÉNÉRALES</a>&emsp;
+                                <a href="{{ path('EditEnvironment')}}" class="contactLien4">CONTACTS ENVIRONNEMENT</a>
+                            </ul>
+                        </div>
+
+                        <!-- debut carré -->
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="add">
+
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <form method="Post">  
+
+                                        <div class="envAffichage">
+                                                                                                                                                                                        
+                                            <input type="hidden" name="idContact" value=''>
+
+                                            <br>
+                                            <!-- nom -->
+                                            <div class="nom">                                       
+                                                <label class="labEnv" for="name">Nom &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+                                                <input name="name" class="inputEnv0" value="">
+                                            </div>
+                                            <br>
+
+                                            <!-- addresse ip -->
+                                            <div class="addresse_ip">
+                                                <label class="labEnv" for="ip_address">Adresse IP&emsp;&emsp;&emsp;&emsp;</label>
+                                                <input class="inputEnv1" name="ip_address" value="">
+                                            </div> 
+                                            <br>
+                                            
+                                            <!-- ssh username -->
+                                            <div class="ssh_username">
+                                                <label class="labEnv" for="ssh_username">Nom d'utilisateur &emsp;</label>
+                                                <input class="inputEnv2" name="ssh_username" value="">
+                                            </div>
+
+                                            {#                                             
+                                            <!-- project -->
+                                            <?php 
+                                                
+                                            if ($_GET['id'] == 0){
+                                                echo'
+                                                <div class="group-form">
+                                                    <div class="project">
+                                                        <label class="labEnv" for="project">Projet <span style="color:red">*&emsp;</span></label>
+                                                        <select type="text" name="project" class="selectEnv">';
+
+                                                            $project = ProjectRepository::getProject();
+
+                                                            foreach ($project as $project) 
+                                                            {
+                                                                echo '<option value="'. $project->getId() . '">'. $project->getName() . '</option>';
+                                                            }
+
+                                                        echo"
+                                                        </select>
+                                                        <p class='erreurEnv'> ". (!isset($errors['projectError']))? '' : $errors['projectError']."</p>
+                                                    </div>
+                                                </div>";
+                                                }
+
+                                            ?> 
+                                            #}
+
+                                            <br>
+
+                                            <div class="form-right">
+
+                                                <!-- port ssh -->
+                                                <div class="port_ssh">
+                                                    <label class="labContact" for="ssh_port">Port SSH &emsp;</label>
+                                                    <input class="inputEnv4" name="ssh_port" value="">
+                                                    <p class='error'><?php echo $errors['ssh_portError']?? '' ?></p>
+
+                                                    <!-- ip restriction -->
+                                                    <label for="ip_restriction">
+                                                    <input type="checkbox" name="ip_restriction">&emsp;Restriction IP</label>
+                                                </div> 
+
+                                                <!-- PHPMyAdmin -->
+                                                <div class="PHPMyAdmin">
+                                                    <label class="labContact" for="phpmyadmin_link">Lien PHPMyAdmin &emsp;</label>
+                                                    <input class="inputEnv5" name="phpmyadmin_link" value="">
+                                                </div>    
+                                                       
+                                                <br>
+
+                                                <!-- link -->
+                                                <div class="link">
+                                                    <label class="labContact" for="link">Lien&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+                                                    <input class="inputEnv6" name="link" value="">   
+                                                </div>    
+                                                
+
+                                            </div>
+                                        </div>
+
+                                        <br>
+
+                                        <!-- ajouter -->
+                                        <button type="submit" name="submit" class="btnOrange">+ AJOUTER</a>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}
