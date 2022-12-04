@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\CustomerRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: CustomerRepository::class)]
 class Customer
@@ -63,4 +65,22 @@ class Customer
 
         return $this;
     }
+
+    #[ORM\OneToMany(targetEntity: Project::class, mappedBy: 'customer')]
+    private $projects;
+
+    public function __construct()
+    {
+        $this->projects = new ArrayCollection();
+    }
+
+    /**
+     * @return Collection|Project[]
+     */
+    public function getProjects(): Collection
+    {
+        return $this->projects;
+    }
+
+    // addProject() and removeProject() were also added
 }

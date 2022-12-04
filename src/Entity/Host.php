@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\HostRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: HostRepository::class)]
 class Host
@@ -63,4 +65,22 @@ class Host
 
         return $this;
     }
+
+    #[ORM\OneToMany(targetEntity: Project::class, mappedBy: 'host')]
+    private $projects;
+
+    public function __construct()
+    {
+        $this->projects = new ArrayCollection();
+    }
+
+    /**
+     * @return Collection|Project[]
+     */
+    public function getProjects(): Collection
+    {
+        return $this->projects;
+    }
+
+    // addProject() and removeProject() were also added
 }

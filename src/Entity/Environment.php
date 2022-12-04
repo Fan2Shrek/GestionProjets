@@ -2,6 +2,10 @@
 
 namespace App\Classes;
 
+use App\Repository\HostRepository;
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
+use App\Entity\project;
 
 class Environment
 {

@@ -2,30 +2,63 @@
 
 namespace App\Entity;
 
-
+use App\Repository\ProjectRepository;
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Customer;
 use App\Entity\Host;
 
 class Project 
 {
-    public function __construct
-    (
-        private int $id,
-        private string $name,
-        private string $code,
-        private ?string $lastpass_folder,
-        private ?string $link_mock_ups,
-        private int $managed_server,
-        private ?string $notes,
-        private Host $host,
-        private Customer $customer,
-    )
-    {
-    }
+
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $code = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $lastpass_folder = null;
+    
+    #[ORM\Column(length: 255)]
+    private ?string $link_mock_ups = null;
+
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $managed_server = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $notes = null;
 
     public function __toString()
     {
         return $this->id;
+    }
+
+    //code
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    public function setCode(string $code): void
+    {
+        $this->code = $code;
+    }
+
+    //name
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
     }
 
     //lastpass_folder
@@ -61,25 +94,44 @@ class Project
         $this->managed_server = $managed_server;
     }
 
-    //host
-    public function getHost(): Host 
-	{
-		return $this->host;
-	}
+    //notes
+    public function getNotes(): ?string
+    {
+        return $this->notes;
+    }
 
-	public function setHost(Host $host_id): void
-	{
-		$this->host = $host_id;
-	}
+    public function setNotes(string $notes): void
+    {
+        $this->notes = $notes;
+    }
 
-    //customer
-	public function getCustomer(): Customer 
-	{
-		return $this->customer;
-	}
+    #[ORM\ManyToOne(targetEntity: Host::class, inversedBy: 'projects')]
+    private $host;
 
-	public function setCustomer(Customer $customer_id): void
-	{
-		$this->customer = $customer_id;
-	}
+    public function getHost(): ?Host
+    {
+        return $this->host;
+    }
+
+    public function setHost(?Host $host): self
+    {
+        $this->host = $host;
+
+        return $this;
+    }
+
+    #[ORM\ManyToOne(targetEntity: Customer::class, inversedBy: 'projects')]
+    private $customer;
+
+    public function getCustomer(): ?Customer
+    {
+        return $this->customer;
+    }
+
+    public function setCustomer(?Customer $customer): self
+    {
+        $this->customer = $customer;
+
+        return $this;
+    }
 }
