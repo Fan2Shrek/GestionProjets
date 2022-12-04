@@ -2,30 +2,70 @@
 
 namespace App\Entity;
 
-
-use App\Entity\Customer;
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Host;
+use App\Entity\Customer;
 
+#[ORM\Entity]
+#[ORM\Table(name: 'project')]
 class Project 
 {
-    public function __construct
-    (
-        private int $id,
-        private string $name,
-        private string $code,
-        private ?string $lastpass_folder,
-        private ?string $link_mock_ups,
-        private int $managed_server,
-        private ?string $notes,
-        private Host $host,
-        private Customer $customer,
-    )
-    {
-    }
 
-    public function __toString()
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $code = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $lastpass_folder = null;
+    
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $link_mock_ups = null;
+
+    #[ORM\Column(type: Types::SMALLINT)]    
+    private ?int $managed_server = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $notes = null;
+
+    #[ORM\OneToOne(targetEntity: Host::class)]
+    private ?Host $host;
+
+    #[ORM\OneToOne(targetEntity: Customer::class)]
+    private ?Customer $customer;
+
+    public function getId(): ?int
     {
         return $this->id;
+    }
+
+    //code
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    public function setCode(string $code): void
+    {
+        $this->code = $code;
+    }
+
+    //name
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
     }
 
     //lastpass_folder
@@ -61,25 +101,36 @@ class Project
         $this->managed_server = $managed_server;
     }
 
+    //notes
+    public function getNotes(): ?string
+    {
+        return $this->notes;
+    }
+
+    public function setNotes(string $notes): void
+    {
+        $this->notes = $notes;
+    }
+
     //host
     public function getHost(): Host 
-	{
-		return $this->host;
-	}
+    {
+        return $this->host;
+    }
 
-	public function setHost(Host $host_id): void
-	{
-		$this->host = $host_id;
-	}
+    public function setHost(Host $host_id): void
+    {
+        $this->host = $host_id;
+    }
 
     //customer
-	public function getCustomer(): Customer 
-	{
-		return $this->customer;
-	}
+    public function getCustomer(): Customer 
+    {
+        return $this->customer;
+    }
 
-	public function setCustomer(Customer $customer_id): void
-	{
-		$this->customer = $customer_id;
-	}
+    public function setCustomer(Customer $customer_id): void
+    {
+        $this->customer = $customer_id;
+    }
 }

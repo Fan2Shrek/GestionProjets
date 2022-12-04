@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\CustomerRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: CustomerRepository::class)]
+#[ORM\Entity]
+#[ORM\Table(name: 'customer')]
 class Customer
 {
     #[ORM\Id]
@@ -20,7 +20,7 @@ class Customer
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $notes = null;
 
     public function getId(): ?int
